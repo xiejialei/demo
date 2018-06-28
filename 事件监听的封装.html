@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+<input type="button" id="btn" value="按钮" />
+
+<script>
+// 绑定
+function on(elem, evtName, fn){
+	if( elem.addEventListener ){ // 支持
+		elem.addEventListener(evtName, fn);
+	}else{ // 不支持
+		elem.attachEvent("on"+evtName, fn);
+	}
+}
+
+function test(){alert(123)}
+
+on(btn, "click", test);	// 给btn元素绑定click事件，关联test方法
+
+//remove(btn, "click", test);	// 删除btn元素上click事件中的test方法
+
+// 解除绑定
+function remove(elem, evtName, fn){
+	if( elem.removeEventListener ){
+		elem.removeEventListener(evtName, fn);
+	}else{
+		elem.detachEvent("on"+evtName, fn);
+	}
+}
+
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<input type="button" id="btn1" value="btn按钮" />	
+<input type="button" id="btn2" value="给按钮添加事件" />
+<input type="button" id="btn3" value="给按钮删除事件" />
+<script>
+function fn(){alert()}
+
+// W3C 标准的写法
+/*
+btn2.addEventListener('click', function(){
+	// 连续点击此按钮时
+	btn1.addEventListener("click", fn, true);	// 绑定1次
+	//btn1.addEventListener("click", function(){alert()}, true);// 绑定多次
+});
+
+btn3.addEventListener('click', function(){
+	btn1.removeEventListener("click", fn, true);
+});
+*/
+
+
+/*
+// IE 标准的写法
+btn2.attachEvent('onclick', function(){
+	btn1.attachEvent('onclick', fn);
+});
+
+btn3.attachEvent('onclick', function(){
+	btn1.detachEvent('onclick', fn);
+});
+
+
+
+btn2.onclick = function(){
+	btn1.onclick = fn;
+}
+btn3.onclick = function(){
+	btn1.onclick = null;
+}
+*/
+
+
+
+</script>
+</body>
+</html>

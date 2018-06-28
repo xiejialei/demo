@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+<input type="text" id="input1" />
+<textarea id="textarea1"></textarea>
+
+<script>
+// event 事件（事件源对象）
+// 描述的是事件的状态
+
+// 鼠标按下时
+//document.onmousedown = function(e){// 在符合w3c规范的浏览器中，函数中的第一个参数，就是event对象（无论这个参数叫什么名字）
+	//console.log(e.button);//0左键 1中轮 2右键
+	//console.log(arguments[0]);
+	//console.log( window.event );	//IE6兼容写法
+	//e = e || window.event;
+//}
+
+
+// 键盘按下时
+//document.onkeypress = function(e){
+	//console.log( e.keyCode );	// 所按下的键子的unicode编码
+	//console.log( e.which );
+	//var code = e.keyCode || e.which;	//兼容写法
+	// 字符集编码
+	//'abc'.charCodeAt(1);	// 获取字符串'abc'中，下标1所对应的字符的unicode编码
+	//String.fromCharCode(65);// 根据unicode编码，返回其字符串
+//}
+// onkeyup 和 onkeydown 在使用 e.keyCode 时，会自动把小写转为大写字母的unicode码
+// onkeypress 是区分大小写的
+
+
+// 组合键
+// onkeypress中的组合键，不够稳定
+// onkeydown onkeyup 没有任何问题的
+/*
+document.onkeydown = function(e){
+	if( e.ctrlKey  && e.shiftKey  &&  e.altKey   && e.keyCode==49 ){
+		alert()
+	}
+}
+*/
+
+
+/*
+// 回车13
+textarea1.onkeydown = function(e){
+	if( e.keyCode==13 && e.ctrlKey ){
+		alert()
+	}
+}
+*/
+
+
+// offset   page    screen    client
+
+
+// 事件冒泡
+
+// 元素节点是嵌套的，事件名称是相同的
+/*
+div1.onclick = function (e){
+	//e.stopPropagation();	// 阻止冒泡   ie6 不支持
+	//e.cancelBubble = true;// 阻止冒泡  	ie6支持
+	// 兼容
+	if(e.stopPropagation){
+		e.stopPropagation();
+	}else{
+		e.cancelBubble = true;
+	}
+}
+*/
+
+
+</script>	
+</body>
+</html>

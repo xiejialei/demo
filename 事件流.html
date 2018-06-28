@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+*{
+	padding: 10px;
+	margin: 10px;
+}	
+#div1{background: red;}
+#div2{background: green;}
+#div3{background: blue;}
+#ul1{background: orange;}
+#li1{background: aqua;}
+#p1{background: blueviolet;}
+#span1{background: cornflowerblue;}
+</style>
+</head>
+<body>
+	<div id="div1">div1
+		<div id="div2">div2
+			<div id="div3">div3
+				<ul id="ul1">ul1
+					<li id="li1">li1
+						<p id="p1">p1
+							<span id="span1">span1</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<script>
+function fn(){alert(this.id)}
+// 顺序：捕获 -> 目标 -> 冒泡
+// true表示捕获		false表示冒泡
+//div1.addEventListener('click', fn, true); // 我们把fn放到了捕获阶段
+//div2.addEventListener('click', fn, true);
+
+//div1.addEventListener('click', fn, true);
+//div2.addEventListener('click', fn, true);
+//div3.addEventListener('click', fn, true);
+//div1.addEventListener('click', function(){alert('冒泡：div1')}, false);
+
+/*
+div1.addEventListener('click', function(){console.log('冒泡:div1');}, false);
+document.body.addEventListener('click', function(){console.log('捕获:body');}, true);
+div3.addEventListener('click', function(){console.log('冒泡:div3');}, false);
+li1.addEventListener('click', function(){console.log('捕获:li1');}, true);
+document.addEventListener('click', function(){console.log('冒泡:html');}, false);
+ul1.addEventListener('click', function(){console.log('捕获:ul1');}, true);
+*/
+
+
+// addEventListener 第三个参数如果省略的话，默认就是冒泡
+//div1.addEventListener('click', function(){console.log('冒泡:div1');});
+//div2.addEventListener('click', function(){console.log('冒泡:div2');});
+
+
+// 后面的会把前面的覆盖
+//div1.onclick = function(){console.log('1');}
+//div1.onclick = function(){console.log('2');}
+
+// 不会覆盖
+/*
+div1.addEventListener('click', function(){console.log('1');}, true);
+div1.addEventListener('click', function(){console.log('2');}, false);
+
+div2.addEventListener('click', function(){console.log('4');}, true);
+div1.addEventListener('click', function(){console.log('7');}, false);
+div2.addEventListener('click', function(){console.log('3');}, false);
+div2.addEventListener('click', function(){console.log('5');}, false);
+*/
+
+
+// 目标阶段是按照程序编写顺序来执行的
+//div2.addEventListener('click', function(){console.log('2');}, false);
+//div2.addEventListener('click', function(){console.log('1');}, true);
+
+
+//div1.onclick = function(){console.log('1');}
+//div1.addEventListener('click', function(){console.log('2');}, true);
+
+
+//document.onmousedown = function(){
+//	return false;
+//}
+
+// IE9之前不支持 addEventListener
+div1.addEventListener('click', function(){
+//	return false;	// 无效
+	console.log( this );//div1
+})
+
+// IE9之前，应该用attachEvent来完成事件监听
+//div1.attachEvent("onclick", function(){
+//	console.log( this );// window
+//});
+
+
+
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#div1{
+	width: 100px;
+	height: 100px;
+	background: yellow;
+	position: absolute;
+}	
+</style>
+</head>
+<body>
+	
+<div id="div1">123</div>	
+
+<script>
+div1.onmousedown = function(e){
+	//var x = e.offsetX;	// 有些浏览器不支持offsetX和Y
+	//var y = e.offsetY;
+	var x = e.clientX - div1.offsetLeft;//推荐使用这种写法获取offsetX和Y
+	var y = e.clientY - div1.offsetTop;
+	
+	document.onmousemove = function(e){
+		div1.style.left = e.clientX-x+"px";		// 23行的clientX与27行的clientX是同一个数据吗？
+		div1.style.top = e.clientY-y+"px";
+	}
+	
+	document.onmouseup = function(){
+		document.onmousemove = null;
+	}
+	
+	return false;	// div中的文字不允许选中
+}
+</script>
+	
+</body>
+</html>

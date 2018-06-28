@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+<ul>
+	<li>red</li>
+	<li>green</li>
+	<li>blue</li>
+	<li>orange</li>
+</ul>	
+
+<script>
+// 要求：给每一个li绑定点击事件	
+//var uls = document.querySelectorAll("li");
+//var len = uls.length;
+//for( var i=0; i<len; i++ ){
+//	uls[i].onclick = function(){alert()}
+//}
+
+
+// 上面的代码，理论上占了4个空间，下面的代码占了1个空间，所以内存损耗降低
+
+// 事件委托解决的是性能上的提高，优化我们的程序
+var ul = document.querySelector("ul");
+ul.onclick = function(e){
+	console.log( e.target );	// 触发的目标元素
+	document.body.style.background = e.target.innerHTML;
+}
+
+</script>
+	
+</body>
+</html>
